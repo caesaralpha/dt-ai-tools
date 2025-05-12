@@ -8,9 +8,11 @@ sys.path.append(str(project_root))
 from tools import transcribe_video
 
 def main():
+    print("Hello from main.py")
     transcribe_video(
-        input_source="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        url_or_file="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         output_dir="output/transcribe_out",
         device="cuda",
-        model_size="small"
+        model="small"
     )
+    print("Done")
