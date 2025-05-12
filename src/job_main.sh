@@ -14,7 +14,7 @@
 
 
 # Activate your conda environment
-source $HOME/dtenv/bin/activate
+source /projects/prjs1547/dtenv/bin/activate
 echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
 module load 2023
 # Run the Python script
