@@ -18,5 +18,6 @@ source /projects/prjs1547/dtenv/bin/activate
 echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
 module load 2023
 # Run the Python script
-python /projects/prjs1547/dt-ai-tools/src/main.py
+cd /projects/prjs1547/dt-ai-tools/src
+python main.py
 
