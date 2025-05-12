@@ -4,7 +4,7 @@
 #SBATCH --error=logs/dt-tools-%j.err
 
 #SBATCH --gpus 1
-#SBATCH -p gpu_h100
+#SBATCH -p gpu_a100
 
 #SBATCH --time=00:30:00  
 #SBATCH --mail-type=BEGIN,END,FAIL
