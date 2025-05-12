@@ -6,7 +6,7 @@
 #SBATCH --gpus 1
 #SBATCH -p gpu_h100
 
-#SBATCH --time=00:10:00  
+#SBATCH --time=00:30:00  
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=c.caesaralphairawan@students.uu.nl
 
