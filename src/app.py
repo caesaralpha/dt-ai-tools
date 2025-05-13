@@ -1,9 +1,15 @@
 import streamlit as st
 from pathlib import Path
-from docling_docs import convert_docs_to_markdown
 
 # Define paths
 project_root = Path(__file__).resolve().parent.parent
+tools_dir = project_root / "tools"
+if str(tools_dir) not in sys.path:
+    sys.path.append(str(tools_dir))
+
+from video_transcriber import transcribe_video_or_audio
+from docling_docs import convert_docs_to_markdown
+
 data_dir = project_root / "data"
 output_dir = project_root / "output" / "docling_out"
 
