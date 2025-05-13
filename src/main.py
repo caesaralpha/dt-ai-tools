@@ -8,7 +8,7 @@ if str(tools_dir) not in sys.path:
     sys.path.append(str(tools_dir))
 
 from video_transcriber import transcribe_video_or_audio
-from docling import convert_docs_to_markdown
+from docling_docs import convert_docs_to_markdown
 
 def test_transcription():
     print("Starting transcription process...")
