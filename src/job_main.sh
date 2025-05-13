@@ -30,5 +30,5 @@ module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0 CUDA/12.6.0
 
 # Run the Python script
 cd "$BASE_PATH/dt-ai-tools/src"
-# srun python main.py
-python main.py
+srun python main.py
+# python main.py

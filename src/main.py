@@ -46,7 +46,7 @@ def test_docling():
     
     # Define sources and output directory
     sources = [
-        str(project_root / "data" / "samplepdf.pdf")
+        str(project_root / "data")+"/samplepdf.pdf"
     ]
     output_dir = project_root / "output" / "docling_out"
     
