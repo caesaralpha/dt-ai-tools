@@ -9,14 +9,13 @@
 #SBATCH --time=00:30:00  
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=c.caesaralphairawan@students.uu.nl
-module load 2023
-module load Anaconda3/2023.07-2
-echo ">>>>>>>>>>Modules loaded <<<<<<<<<"
 
 # conda create -n dtenv python=3.11
-# Activate your environment
-source activate dtenv
+# Activate your conda environment
+source /projects/prjs1547/venv/bin/activate
 pip install pytranscript
+echo ">>>>>>>>>>venv is activated <<<<<<<<<" 
+module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0
 
 
 # Run the Python script
