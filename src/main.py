@@ -66,5 +66,5 @@ def test_docling():
         sys.exit(1)
 
 if __name__ == "__main__":
-    # test_transcription()
-    test_docling()
+    test_transcription()
+    # test_docling()
