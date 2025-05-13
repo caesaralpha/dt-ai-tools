@@ -1,7 +1,7 @@
 import pytranscript as pt
 from pathlib import Path
 
-def transcribe_video_or_audio(input_file, output_file, model="vosk-model-en-us-aspire-0.2", target_language=None, start=0, end=None):
+def transcribe_video_or_audio(input_file, output_file, model="vosk-model-en-us-0.42-gigaspeech", target_language=None, start=0, end=None):
     """
     Transcribes a video or audio file and optionally translates the transcript to a target language.
 

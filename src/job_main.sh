@@ -10,16 +10,23 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=c.caesaralphairawan@students.uu.nl
 
-# conda create -n dtenv python=3.11
+# Define the base project path as a parameter
+BASE_PATH="/projects/prjs1547"
+
+# Setup cache location for pip, huggingface, vosk, and transformers, all under $BASE_PATH/cache
+if [ ! -d "$BASE_PATH/cache/" ]; then
+    mkdir -p "$BASE_PATH/cache/"
+fi
+export HF_HOME="$BASE_PATH/cache/"
+export TRANSFORMERS_CACHE="$BASE_PATH/cache/"
+export VOSK_CACHE="$BASE_PATH/cache/"
+export PIP_CACHE_DIR="$BASE_PATH/cache/"
+
 # Activate your conda environment
-source /projects/prjs1547/venv/bin/activate
-# pip install pytranscript
-pip3 install vosk
+source "$BASE_PATH/venv/bin/activate"
 echo ">>>>>>>>>>venv is activated <<<<<<<<<" 
 module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0
 
-
 # Run the Python script
-cd /projects/prjs1547/dt-ai-tools/src
+cd "$BASE_PATH/dt-ai-tools/src"
 python main.py
-
