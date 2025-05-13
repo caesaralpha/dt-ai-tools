@@ -7,14 +7,10 @@ tools_dir = project_root / "tools"
 if str(tools_dir) not in sys.path:
     sys.path.append(str(tools_dir))
 
-# Import the transcribe_video_or_audio function from the tools module
-try:
-    from video_transcriber import transcribe_video_or_audio
-except ImportError as e:
-    print(f"Error importing transcribe_video_or_audio: {e}")
-    sys.exit(1)
+from video_transcriber import transcribe_video_or_audio
+from docling import convert_docs_to_markdown
 
-def main():
+def test_transcription():
     print("Starting transcription process...")
     
     # Define input and output paths relative to the project root
@@ -45,5 +41,30 @@ def main():
         print(f"An error occurred during transcription: {e}")
         sys.exit(1)
 
+def test_docling():
+    print("Starting document conversion process...")
+    
+    # Define sources and output directory
+    sources = [
+        str(project_root / "data" / "samplepdf.pdf")
+    ]
+    output_dir = project_root / "output" / "docling_out"
+    
+    # Ensure output directory exists or create it
+    try:
+        output_dir.mkdir(parents=True, exist_ok=True)
+    except Exception as e:
+        print(f"Error creating output directory '{output_dir}': {e}")
+        sys.exit(1)
+    
+    # Call the document conversion function
+    try:
+        convert_docs_to_markdown(sources, str(output_dir))
+        print("Document conversion completed successfully.")
+    except Exception as e:
+        print(f"An error occurred during document conversion: {e}")
+        sys.exit(1)
+
 if __name__ == "__main__":
-    main()
+    # test_transcription()
+    test_docling()
