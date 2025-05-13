@@ -19,7 +19,7 @@ def main():
     
     # Define input and output paths relative to the project root
     input_file = project_root / "data" / "samplevid.mp4"
-    output_dir = project_root / "output" / "transcribe_out"/ "samplevid.srt"
+    output_dir = project_root / "output" / "transcribe_out"
     
     # Ensure input file exists
     if not input_file.is_file():
@@ -37,7 +37,7 @@ def main():
     try:
         transcribe_video_or_audio(
             input_file=str(input_file),
-            output_file=str(output_dir),
+            output_file=str(output_dir)+"/transcript.srt",
             model=project_root /"models"/"vosk-model-en-us-0.42-gigaspeech"
         )
         print("Transcription completed successfully.")
