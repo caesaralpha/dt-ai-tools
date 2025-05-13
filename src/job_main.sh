@@ -10,13 +10,15 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=c.caesaralphairawan@students.uu.nl
 
-# Set the model name from the command line argument
-
+module load 2023 CUDA/12.4.0 PyTorch/2.1.2-foss-2023a torchvision/0.16.0-foss-2023a-CUDA-12.1.1
+module list
+echo ">>>>>>>>>>Modules loaded <<<<<<<<<"
 
 # Activate your conda environment
 source /projects/prjs1547/dtenv/bin/activate
 echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
-module load 2023
+
+
 # Run the Python script
 transcribe-anything https://www.youtube.com/watch?v=dQw4w9WgXcQ --device cuda --output_dir /projects/prjs1547/dt-ai-tools/output/transcriber_out
 # cd /projects/prjs1547/dt-ai-tools/src
