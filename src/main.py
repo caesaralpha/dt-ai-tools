@@ -38,7 +38,7 @@ def main():
         transcribe_video_or_audio(
             input_file=str(input_file),
             output_file=str(output_dir),
-            model=project_root /"models"/"vosk-model-en-us-0.42-gigaspeech.zip"
+            model=project_root /"models"/"vosk-model-en-us-0.42-gigaspeech"
         )
         print("Transcription completed successfully.")
     except Exception as e:
