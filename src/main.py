@@ -19,7 +19,7 @@ def main():
     
     # Define input and output paths relative to the project root
     input_file = project_root / "data" / "samplevid.mp4"
-    output_dir = project_root / "output" / "transcribe_out"
+    output_dir = project_root / "output" / "transcriber_out"
     
     # Ensure input file exists
     if not input_file.is_file():
