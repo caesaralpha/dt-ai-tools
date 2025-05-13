@@ -36,8 +36,8 @@ def main():
     # Call the transcription function
     try:
         transcribe_video_or_audio(
-            url_or_file=str(input_file),
-            output_dir=str(output_dir)
+            input_file=str(input_file),
+            output_file=str(output_dir)
         )
         print("Transcription completed successfully.")
     except Exception as e:
