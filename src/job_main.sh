@@ -25,7 +25,7 @@ export PIP_CACHE_DIR="$BASE_PATH/cache/"
 # Activate your conda environment
 source "$BASE_PATH/venv/bin/activate"
 echo ">>>>>>>>>>venv is activated <<<<<<<<<" 
-module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0
+module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0 CUDA/12.6.0
 # pip install docling
 
 # Run the Python script
