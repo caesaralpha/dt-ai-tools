@@ -18,7 +18,7 @@ source /projects/prjs1547/dtenv/bin/activate
 echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
 module load 2023
 # Run the Python script
-transcribe-anything https://www.youtube.com/watch?v=dQw4w9WgXcQ --device insane --output_dir /projects/prjs1547/dt-ai-tools/output/transcriber_out
+transcribe-anything https://www.youtube.com/watch?v=dQw4w9WgXcQ --device cuda --output_dir /projects/prjs1547/dt-ai-tools/output/transcriber_out
 # cd /projects/prjs1547/dt-ai-tools/src
 # python main.py
 
