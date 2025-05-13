@@ -11,30 +11,15 @@
 #SBATCH --mail-user=c.caesaralphairawan@students.uu.nl
 module load 2023
 module load Anaconda3/2023.07-2
-module load CUDA/12.4.0 
-module list
 echo ">>>>>>>>>>Modules loaded <<<<<<<<<"
 
-conda create -n dtenv python=3.11
+# conda create -n dtenv python=3.11
 # Activate your environment
 source activate dtenv
-# Install LLaMA-Factory
-cd /projects/prjs1547/LLaMA-Factory
-pip install -r requirements.txt 
-pip install -e ".[torch,metrics]"
-echo ">>>>>>>>>>requirements.txt from LLAMA-Factory is installed <<<<<<<<<" 
-pip install ffmpeg-python
-pip install transcribe-anything
-echo ">>>>>>>>>>transcribe-anything is installed <<<<<<<<<" 
-
-# # Activate your conda environment
-# source /projects/prjs1547/dtenv/bin/activate
-# # pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
-# echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
+pip install pytranscript
 
 
 # Run the Python script
-transcribe-anything https://www.youtube.com/watch?v=dQw4w9WgXcQ --device cuda --output_dir /projects/prjs1547/dt-ai-tools/output/transcriber_out
-# cd /projects/prjs1547/dt-ai-tools/src
-# python main.py
+cd /projects/prjs1547/dt-ai-tools/src
+python main.py
 

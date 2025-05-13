@@ -1,18 +1,47 @@
 import sys
 from pathlib import Path
 
-# Add the project root to sys.path
+# Add the project root to sys.path for module imports
 project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
-# Import the transcribe_video function from the tools module
-from tools import transcribe_video
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
+
+# Import the transcribe_video_or_audio function from the tools module
+try:
+    from tools import transcribe_video_or_audio
+except ImportError as e:
+    print(f"Error importing transcribe_video_or_audio: {e}")
+    sys.exit(1)
 
 def main():
-    print("Hello from main.py")
-    transcribe_video(
-        url_or_file="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        output_dir="output/transcribe_out",
-        device="cuda",
-        model="small"
-    )
-    print("Done")
+    print("Starting transcription process...")
+    
+    # Define input and output paths relative to the project root
+    input_file = project_root / "data" / "samplevid.mp4"
+    output_dir = project_root / "output" / "transcribe_out"
+    
+    # Ensure input file exists
+    if not input_file.is_file():
+        print(f"Error: Input file '{input_file}' does not exist.")
+        sys.exit(1)
+    
+    # Ensure output directory exists or create it
+    try:
+        output_dir.mkdir(parents=True, exist_ok=True)
+    except Exception as e:
+        print(f"Error creating output directory '{output_dir}': {e}")
+        sys.exit(1)
+    
+    # Call the transcription function
+    try:
+        transcribe_video_or_audio(
+            url_or_file=str(input_file),
+            output_dir=str(output_dir)
+        )
+        print("Transcription completed successfully.")
+    except Exception as e:
+        print(f"An error occurred during transcription: {e}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

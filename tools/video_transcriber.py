@@ -1,30 +1,42 @@
-# generate a function and make it as module to transcribe video by using transcribe-anything
-import transcribe_anything
-import logging
+import pytranscript as pt
+from pathlib import Path
 
-def transcribe_video(
-    url_or_file: str,
-    output_dir: str = "output_dir",
-    model: str = "large",
-    task: str = "transcribe",
-    device: str = "cuda"
-):
+def transcribe_video_or_audio(input_file, output_file, model="vosk-model-en-us-aspire-0.2", target_language=None, start=0, end=None):
     """
-    Transcribe a video using transcribe-anything.
+    Transcribes a video or audio file and optionally translates the transcript to a target language.
 
     Args:
-        url_or_file (str): URL or file path of the video to transcribe.
-        output_dir (str): Directory to save the transcription output.
-        model (str): Model size to use (e.g., tiny, small, medium, large).
-        task (str): Task to perform (transcribe or translate).
-        device (str): Device to use (cuda, cpu, etc.).
+        input_file (str): Path to the input video or audio file.
+        output_file (str): Path to save the transcript (e.g., .srt or .txt).
+        model (str): Path to the transcription model.
+        target_language (str, optional): Language code for translation (e.g., "fr" for French). Defaults to None.
+        start (int, optional): Start time in seconds for transcription. Defaults to 0.
+        end (int, optional): End time in seconds for transcription. Defaults to None.
+
+    Returns:
+        None
     """
-    logging.info(f"Starting transcription for {url_or_file}")
-    transcribe_anything.transcribe_anything(
-        url_or_file=url_or_file,
-        output_dir=output_dir,
-        task=task,
-        model=model,
-        device=device
-    )
-    logging.info(f"Transcription completed. Output saved to {output_dir}")
+    # Ensure the input file exists
+    input_path = Path(input_file)
+    if not input_path.exists():
+        raise FileNotFoundError(f"Input file '{input_file}' does not exist.")
+
+    # Convert video to a valid WAV file if necessary
+    wav_file = pt.to_valid_wav(input_file, "temp_audio.wav", start=start, end=end)
+
+    # Transcribe the audio
+    transcript = pt.transcribe(wav_file, model=model, max_size=None)
+
+    # Translate the transcript if a target language is specified
+    if target_language:
+        transcript, errors = transcript.translate(target_language)
+
+    # Write the transcript to the output file
+    transcript.write(output_file)
+
+    # Clean up temporary files
+    temp_audio_path = Path("temp_audio.wav")
+    if temp_audio_path.exists():
+        temp_audio_path.unlink()
+
+    print(f"Transcription completed. Transcript saved to '{output_file}'.")
