@@ -9,15 +9,23 @@
 #SBATCH --time=00:30:00  
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=c.caesaralphairawan@students.uu.nl
-
-module load 2023 CUDA/12.4.0 
+module load 2023
+module load Anaconda3/2023.07-2
+module load CUDA/12.4.0 
 module list
 echo ">>>>>>>>>>Modules loaded <<<<<<<<<"
 
-# Activate your conda environment
-source /projects/prjs1547/dtenv/bin/activate
-# pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
-echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
+conda create -n dtenv python=3.11
+# Activate your environment
+source activate dtenv
+pip install transcribe-anything
+# Check whether the GPU is available
+srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
+
+# # Activate your conda environment
+# source /projects/prjs1547/dtenv/bin/activate
+# # pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+# echo ">>>>>>>>>>dtenv is activated <<<<<<<<<" 
 
 
 # Run the Python script
