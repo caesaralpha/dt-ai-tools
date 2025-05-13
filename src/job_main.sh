@@ -18,9 +18,14 @@ echo ">>>>>>>>>>Modules loaded <<<<<<<<<"
 conda create -n dtenv python=3.11
 # Activate your environment
 source activate dtenv
+# Install LLaMA-Factory
+cd /projects/prjs1547/LLaMA-Factory
+pip install -r requirements.txt 
+pip install -e ".[torch,metrics]"
+echo ">>>>>>>>>>requirements.txt from LLAMA-Factory is installed <<<<<<<<<" 
+pip install ffmpeg-python
 pip install transcribe-anything
-# Check whether the GPU is available
-srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
+echo ">>>>>>>>>>transcribe-anything is installed <<<<<<<<<" 
 
 # # Activate your conda environment
 # source /projects/prjs1547/dtenv/bin/activate
