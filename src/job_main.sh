@@ -26,7 +26,7 @@ export PIP_CACHE_DIR="$BASE_PATH/cache/"
 source "$BASE_PATH/venv/bin/activate"
 echo ">>>>>>>>>>venv is activated <<<<<<<<<" 
 module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0
-pip install docling
+# pip install docling
 
 # Run the Python script
 cd "$BASE_PATH/dt-ai-tools/src"

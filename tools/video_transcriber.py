@@ -1,7 +1,7 @@
 import pytranscript as pt
 from pathlib import Path
 
-def transcribe_video_or_audio(input_file, output_file, model="vosk-model-en-us-aspire-0.2", target_language=None, start=0, end=None):
+def transcribe_video_or_audio(input_file, output_file, model="", target_language=None, start=0, end=None):
     """
     Transcribes a video or audio file and optionally translates the transcript to a target language.
 
@@ -42,3 +42,25 @@ def transcribe_video_or_audio(input_file, output_file, model="vosk-model-en-us-a
     transcript.write(output_file)
 
     print(f"Transcription completed. Transcript saved to '{output_file}'.")
+    
+# create new function to convert .srt to .txt
+def convert_srt_to_txt(srt_file, txt_file):
+    """
+    Converts a .srt file to a .txt file.
+
+    Args:
+        srt_file (str): Path to the input .srt file.
+        txt_file (str): Path to save the output .txt file.
+
+    Returns:
+        None
+    """
+    # Read the .srt file
+    with open(srt_file, 'r', encoding='utf-8') as f:
+        srt_content = f.read()
+
+    # Write the content to a .txt file
+    with open(txt_file, 'w', encoding='utf-8') as f:
+        f.write(srt_content)
+
+    print(f"Converted '{srt_file}' to '{txt_file}'.")
