@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=dt-tools
-#SBATCH --output=logs/dt-tools-%j.out
-#SBATCH --error=logs/dt-tools-%j.err
+#SBATCH --job-name=dt-app
+#SBATCH --output=logs/dt-app-%j.out
+#SBATCH --error=logs/dt-app-%j.err
 
 #SBATCH --gpus 1
 #SBATCH -p gpu_a100
@@ -31,5 +31,5 @@ pip install streamlit
 
 # Run the Python script
 cd "$BASE_PATH/dt-ai-tools/src"
-srun python main.py
+streamlit run app.py --server.port=8501 --server.headless=true
 # python main.py
