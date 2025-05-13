@@ -8,7 +8,7 @@ if str(project_root) not in sys.path:
 
 # Import the transcribe_video_or_audio function from the tools module
 try:
-    from tools import transcribe_video_or_audio
+    from tools.video_transcriber import transcribe_video_or_audio
 except ImportError as e:
     print(f"Error importing transcribe_video_or_audio: {e}")
     sys.exit(1)

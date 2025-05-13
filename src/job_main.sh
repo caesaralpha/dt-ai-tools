@@ -13,7 +13,7 @@
 # conda create -n dtenv python=3.11
 # Activate your conda environment
 source /projects/prjs1547/venv/bin/activate
-pip install pytranscript
+# pip install pytranscript
 echo ">>>>>>>>>>venv is activated <<<<<<<<<" 
 module load 2024 FFmpeg/7.0.2-GCCcore-13.3.0
 
