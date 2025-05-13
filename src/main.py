@@ -3,12 +3,13 @@ from pathlib import Path
 
 # Add the project root to sys.path for module imports
 project_root = Path(__file__).resolve().parent.parent
-if str(project_root) not in sys.path:
-    sys.path.append(str(project_root))
+tools_dir = project_root / "tools"
+if str(tools_dir) not in sys.path:
+    sys.path.append(str(tools_dir))
 
 # Import the transcribe_video_or_audio function from the tools module
 try:
-    from tools.video_transcriber import transcribe_video_or_audio
+    from video_transcriber import transcribe_video_or_audio
 except ImportError as e:
     print(f"Error importing transcribe_video_or_audio: {e}")
     sys.exit(1)
