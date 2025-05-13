@@ -21,15 +21,15 @@ def convert_docs_to_markdown(sources, output_dir):
         try:
             # Generate a filename based on the source
             source_name = Path(source).stem if Path(source).is_file() else source.split("/")[-1]
-            output_file = output_path / f"{source_name}.md"
+            output_dir = output_path
 
             # Run the docling CLI command
             subprocess.run(
-                ["docling", source, "--output", str(output_file)],
+                ["docling", source, "--output", str(output_dir)],
                 check=True,
                 text=True
             )
 
-            print(f"Converted '{source}' to '{output_file}'")
+            print(f"Converted '{source}' to '{output_dir}'")
         except subprocess.CalledProcessError as e:
             print(f"Failed to convert '{source}': {e}")
